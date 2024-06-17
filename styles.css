@@ -1,0 +1,5 @@
+ /* Forzar a que siempre se muestre el botón de hamburguesa */
+.navbar-toggler,.navbar-toggler-icon {
+   display: block!important;
+}
+
