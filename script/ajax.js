@@ -28,6 +28,7 @@ obtenerTareas()
 
 
 function obtenerTareas() {
+   productos = [];
   fetch(URLproductos)
     .then((response) => {
       // operador ternario como alternativa
@@ -41,6 +42,7 @@ function obtenerTareas() {
       productos.push(...data);
       console.log(productos)
       productos.reverse();
+      
     })
     .then(() => {
       if (productos.length > 0) {
@@ -67,8 +69,8 @@ function guardarTarea(data, callback) {
    const nuevoProducto = {
      fechaCreacion: data.fecha,
      fechaConculsion: null,
-     titulo: data.titulo,
-     descripcion: data.descripcion,
+     titulo: data.tittle,
+     descripcion: data.description,
      estado: "nuevo"
    };
    const opciones = {
@@ -91,8 +93,8 @@ function guardarTarea(data, callback) {
          callback();
        }
        // Actualizar productos y mostrar el ID en inputCodigo
-       obtenerProductos();
-       inputCodigo.value = data.id;
+       obtenerTareas();
+     
      })
      .catch((error) => {
        // Manejo de errores

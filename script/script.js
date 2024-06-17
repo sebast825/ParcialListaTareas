@@ -6,6 +6,13 @@ const formCreate = document.querySelector(".formCreate");
 formCreate.addEventListener("submit", (e) => {
    e.preventDefault();
    console.log(createTittle.value,createDescription.value);
+
+   data = {
+      tittle: createTittle.value,
+      description: createDescription.value,
+      fecha: obtenerFechaHoraActual()
+   }
+   guardarTarea(data)
 })
 
 function obtenerFechaHoraActual() {
