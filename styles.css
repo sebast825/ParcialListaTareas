@@ -3,3 +3,26 @@
    display: block!important;
 }
 
+.card-img{
+   max-width: 100px;
+}
+
+.card{
+   @media screen and (min-width:900px) {
+      width: 500px;
+
+   }
+}
+   .activeCardsContainer{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      flex-direction: column;
+
+      @media screen and (min-width:900px) {
+         flex-direction: row;
+
+   }
+
+}
