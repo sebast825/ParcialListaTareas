@@ -4,6 +4,7 @@ const URLtarea =
   "https://66252bda04457d4aaf9e131e.mockapi.io/api/v1/tasks";
   
 let tareaLista = [];
+const listaEstados = ["nuevo","terminado"]
 
 function retornarFilaHTML(data) {
   return `
@@ -71,7 +72,7 @@ function guardarTarea(data, callback) {
      fechaConculsion: null,
      tittle: data.tittle,
      descritcion: data.description,
-     estado: "nuevo"
+     estado: listaEstados[0]
    };
    const opciones = {
      method: "POST",
