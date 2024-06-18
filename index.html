@@ -28,6 +28,43 @@
   
 
   </nav>
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#taskModal">
+   Seleccionar Tarea
+ </button>
+
+
+ <div class="modal fade" id="taskModal" tabindex="-1" role="dialog" aria-labelledby="taskModalLabel" aria-hidden="true">
+   <div class="modal-dialog" role="document">
+     <div class="modal-content">
+       <div class="modal-header">
+         <h5 class="modal-title" id="taskModalLabel">Seleccionar Tarea a editar </h5>
+
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+         </button>
+       </div>
+       <div class="modal-body">
+         <ul class="list-group updateList" id="taskList">
+          <!-- listado de tareas -->
+         </ul>
+         <div id="secondList" style="display: none;">
+           <h5 class="tareaEditar-tittle">Segunda Lista</h5>
+           <ul class="list-group">
+             <li class="list-group-item">Elemento 1</li>
+             <li class="list-group-item">Elemento 2</li>
+             <li class="list-group-item">Elemento 3</li>
+             <!-- listado de estados-->
+           </ul>
+         </div>
+       </div>
+       <div class="modal-footer">
+         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+         <button type="button" class="btn btn-primary" id="selectTaskBtn">Seleccionar Tarea</button>
+       </div>
+     </div>
+   </div>
+ </div>
+
 
   <div class="container activeCardsContainer">
    <div class="card p-3">
@@ -103,16 +140,16 @@
                  
                  <div class="modal-footer flex-column w-100">  
                   <button type="button" class="btn btn-primary btn-block createTask" data-toggle="modal"data-dismiss="modal" data-target="#createModal">Crear Tarea</button>
-                  <button type="button" class="btn btn-danger btn-block changeStatus"data-toggle="modal"data-dismiss="modal">Cambiar Estado</button>
+                  <button type="button" class="btn btn-danger btn-block changeStatus"data-toggle="modal"data-dismiss="modal" data-target="#taskModal">Cambiar Estado</button>
                   <button type="button" class="btn btn-secondary btn-block config" data-toggle="modal"data-dismiss="modal">Configuración</button>
 
-              </div>
+
               
              </div>
          </div>
      </div>
    <script src="script/script.js"></script>
    <script src="script/ajax.js"></script>
-
+<script src="script/update.js"></script>
 </body>
 </html>

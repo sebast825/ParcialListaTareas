@@ -30,4 +30,6 @@ function obtenerFechaHoraActual() {
  
    return `${fecha}, ${horaString}`;
  }
-console.log(obtenerFechaHoraActual())
+
+
+ 

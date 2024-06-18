@@ -1,9 +1,9 @@
 const containerTasks = document.querySelector(".container");
 
-const URLproductos =
+const URLtarea =
   "https://66252bda04457d4aaf9e131e.mockapi.io/api/v1/tasks";
   
-let productos = [];
+let tareaLista = [];
 
 function retornarFilaHTML(data) {
   return `
@@ -28,8 +28,8 @@ obtenerTareas()
 
 
 function obtenerTareas() {
-   productos = [];
-  fetch(URLproductos)
+   tareaLista = [];
+  fetch(URLtarea)
     .then((response) => {
       // operador ternario como alternativa
       if (response.status === 200) {
@@ -39,17 +39,17 @@ function obtenerTareas() {
       }
     })
     .then((data) => {
-      productos.push(...data);
-      console.log(productos)
-      productos.reverse();
+      tareaLista.push(...data);
+      console.log(tareaLista)
+      tareaLista.reverse();
       
     })
     .then(() => {
-      if (productos.length > 0) {
+      if (tareaLista.length > 0) {
         //containerFotos.innerHTML ="";
-      /*  productos.forEach(
-          (producto) => (containerFotos.innerHTML += retornarFilaHTML(producto))
-        )*/
+        tareaLista.forEach(
+          (tarea) => (containerTasks.innerHTML += retornarFilaHTML(tarea))
+        )
         
       }
     
@@ -69,8 +69,8 @@ function guardarTarea(data, callback) {
    const nuevoProducto = {
      fechaCreacion: data.fecha,
      fechaConculsion: null,
-     titulo: data.tittle,
-     descripcion: data.description,
+     tittle: data.tittle,
+     descritcion: data.description,
      estado: "nuevo"
    };
    const opciones = {
@@ -79,7 +79,7 @@ function guardarTarea(data, callback) {
      body: JSON.stringify(nuevoProducto),
    };
  
-   fetch(URLproductos, opciones)
+   fetch(URLtareaLista, opciones)
      .then((response) => {
        if (response.status === 201) {
          return response.json();
@@ -92,7 +92,7 @@ function guardarTarea(data, callback) {
        if (callback) {
          callback();
        }
-       // Actualizar productos y mostrar el ID en inputCodigo
+       // Actualizar tareaLista y mostrar el ID en inputCodigo
        obtenerTareas();
      
      })
