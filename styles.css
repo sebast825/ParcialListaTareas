@@ -27,6 +27,13 @@
 
 }
 
+.terminado{
+   color: red!important;
+   border: 1px solid red!important;
+   background-color: #ccc!important;
+   filter: grayscale(50%);
+
+}
 /* 
 .updateTarea{
    background-color: red!important;

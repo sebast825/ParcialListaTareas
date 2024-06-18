@@ -65,7 +65,6 @@ function cargarEstadosUpdateModal() {
 function eventoSeleccionarStatusEditar() {
    const updateStatus = document.querySelectorAll(".updateStatus");
    updateStatus.forEach(status =>{
-      console.log("aca")
       status.addEventListener("click", (e)=>{
          //statusAEditar = e.target.dataset.name;
          if (e.target.tagName === "LI") {
@@ -101,6 +100,7 @@ function actualizarTarea(tarea)
    } 
    tarea = neuvaTarea;
    modifcarProducto(tarea)
+   
 }
 changeStatus.addEventListener("click", (e) => {
   cargarTasksUpdateModal();

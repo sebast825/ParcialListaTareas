@@ -8,8 +8,8 @@ const listaEstados = ["nuevo","terminado"]
 
 function retornarFilaHTML(data) {
   return `
- <div class="card p-3">
-      <div class="row no-gutters">
+ <div class="card p-3  ${data.estado}">
+      <div class="row no-gutters ">
         <div class="col-9 col-md-8">
           <div class="card-body">
             <h2 class="card-title">${data.tittle}</h2>
@@ -26,6 +26,19 @@ function retornarFilaHTML(data) {
 }
 obtenerTareas()
 
+function mostrarTareas(){
+  console.log("estamos aca")
+  containerTasks.innerHTML = "";
+  tareaLista.forEach(
+    (tarea) => {
+      containerTasks.innerHTML += retornarFilaHTML(tarea)
+    }
+  )
+}
+
+function ordenarTareas(){
+    tareaLista.fechaCreacion.sort()
+}
 
 
 function obtenerTareas() {
@@ -48,9 +61,7 @@ function obtenerTareas() {
     .then(() => {
       if (tareaLista.length > 0) {
         //containerFotos.innerHTML ="";
-        tareaLista.forEach(
-          (tarea) => (containerTasks.innerHTML += retornarFilaHTML(tarea))
-        )
+        mostrarTareas()
         
       }
     
@@ -80,7 +91,7 @@ function guardarTarea(data, callback) {
      body: JSON.stringify(nuevoProducto),
    };
  
-   fetch(URLtareaLista, opciones)
+   fetch(URLtarea, opciones)
      .then((response) => {
        if (response.status === 201) {
          return response.json();
@@ -127,7 +138,9 @@ function modifcarProducto (data){
   fetch(`${URLtarea}/${data.id}`, opciones)
   .then((response)=> {
       if (response.status === 200) {
-          return response.json()
+        obtenerTareas();
+
+        return response.json()
       } else {
           throw new Error("Error al modificar el recurso.")
       }
