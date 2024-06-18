@@ -41,6 +41,7 @@ function eventoSeleccionarTareaEditar() {
         elemntWithInfo = e.target.parentElement;
       }
       idTaskEditar = elemntWithInfo.dataset.id.trim();
+
       //console.log(elemntWithInfo.dataset.tittle,elemntWithInfo.dataset.id)
       tareaAEdiar.innerHTML = elemntWithInfo.dataset.tittle;
       cargarEstadosUpdateModal();
@@ -73,6 +74,7 @@ function eventoSeleccionarStatusEditar() {
           } else {
             statusAEditar = e.target.parentElement.dataset.name;
           }
+          findProductoActualizar()
           //cierra el modal
           document.querySelector('.closeUpdateModalBtn').click();            
       })
@@ -80,7 +82,26 @@ function eventoSeleccionarStatusEditar() {
    })
 }
 
+function findProductoActualizar(){
 
+   //let tareaAEditar = tareaLista.forEach(elem => {console.log(parseInt(elem.id) , parseInt(idTaskEditar))})
+   let tareaAEditar = tareaLista.find(elem =>parseInt(elem.id) == parseInt(idTaskEditar))
+
+   //console.log(tareaAEditar);
+   actualizarTarea(tareaAEditar)
+
+}
+function actualizarTarea(tarea)
+{
+   let neuvaTarea = { ...tarea, estado: statusAEditar };
+   if (statusAEditar == listaEstados[listaEstados.length - 1]) {
+      let hora = obtenerFechaHoraActual()
+       neuvaTarea = { ...neuvaTarea, fechaConclusion: hora};
+
+   } 
+   tarea = neuvaTarea;
+   modifcarProducto(tarea)
+}
 changeStatus.addEventListener("click", (e) => {
   cargarTasksUpdateModal();
 });

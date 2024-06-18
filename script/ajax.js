@@ -69,9 +69,9 @@ function guardarTarea(data, callback) {
    // Validación de datos
    const nuevoProducto = {
      fechaCreacion: data.fecha,
-     fechaConculsion: null,
+     fechaConclusion: null,
      tittle: data.tittle,
-     descritcion: data.description,
+     description: data.description,
      estado: listaEstados[0]
    };
    const opciones = {
@@ -108,3 +108,45 @@ function guardarTarea(data, callback) {
      });
  }
  
+ 
+function modifcarProducto (data){
+  const tareaModificada = {
+    fechaCreacion: data.fecha,
+    fechaConculsion: data.fechaConclusion,
+    tittle: data.tittle,
+    descritcion: data.description,
+    estado: data.estado
+  }
+
+  const opciones = {
+      method: 'PUT',
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(tareaModificada)
+  }
+
+  fetch(`${URLtarea}/${data.id}`, opciones)
+  .then((response)=> {
+      if (response.status === 200) {
+          return response.json()
+      } else {
+          throw new Error("Error al modificar el recurso.")
+      }
+  })
+  .then((data)=> {
+     
+      ToastIt.now({
+          message: "tarea modificada con éxito.",
+          style: 'success',
+          timer: 3700,
+          close: true
+      })
+  })
+  .catch((error)=> {
+      ToastIt.now({
+          message: error.message,
+          style: 'error',
+          timer: 3700,
+          close: true
+      })
+  })
+}
