@@ -4,6 +4,7 @@ const URLtarea =
   "https://66252bda04457d4aaf9e131e.mockapi.io/api/v1/tasks";
   
 let tareaLista = [];
+//si se agregan estados, terminado SIEMPRE debe ser el ultimo
 const listaEstados = ["nuevo","terminado"]
 
 function retornarFilaHTML(data) {
@@ -28,6 +29,7 @@ obtenerTareas()
 
 function mostrarTareas(){
   console.log("estamos aca")
+  ordenarTareas()
   containerTasks.innerHTML = "";
   tareaLista.forEach(
     (tarea) => {
@@ -37,7 +39,23 @@ function mostrarTareas(){
 }
 
 function ordenarTareas(){
-    tareaLista.fechaCreacion.sort()
+  let statusTerminado = listaEstados[listaEstados.length-1]
+  tareaLista.sort((a, b) => {
+      //ordena por estado
+      if (a.estado == statusTerminado && b.estado != statusTerminado) {
+        return 1;
+    }
+    if (a.estado != statusTerminado && b.estado == statusTerminado) {
+        return -1;
+    }
+
+    // ordena por fecha en caso de que los estados sean iguales
+    let fechaA = new Date(a.fechaCreacion);
+    let fechaB = new Date(b.fechaCreacion);
+  
+    return fechaA - fechaB;
+  });
+
 }
 
 
@@ -93,10 +111,14 @@ function guardarTarea(data, callback) {
  
    fetch(URLtarea, opciones)
      .then((response) => {
+      document.querySelector('.closeCreateModalBtn').click();            
+
        if (response.status === 201) {
+
          return response.json();
        } else {
          throw new Error("No se puede crear el recurso.");
+
        }
      })
      .then((data) => {
