@@ -1,5 +1,6 @@
 const containerTasks = document.querySelector(".container");
 
+
 const URLtarea =
   "https://66252bda04457d4aaf9e131e.mockapi.io/api/v1/tasks";
   
@@ -80,6 +81,7 @@ function guardarTarea(data, callback) {
        obtenerTareas();
      
      })
+     
      .catch((error) => {
        // Manejo de errores
        ToastIt.now({

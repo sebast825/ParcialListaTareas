@@ -31,5 +31,3 @@ function obtenerFechaHoraActual() {
    return `${fecha}, ${horaString}`;
  }
 
-
- 
