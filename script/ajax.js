@@ -8,6 +8,7 @@ let tareaLista = [];
 //si se agregan estados, terminado SIEMPRE debe ser el ultimo
 const listaEstados = ["nuevo","terminado"]
 
+obtenerTareas()
 
 
 function obtenerTareas() {
@@ -30,6 +31,7 @@ function obtenerTareas() {
     .then(() => {
       if (tareaLista.length > 0) {
         //containerFotos.innerHTML ="";
+        ordenarTareas()
         mostrarTareas()
         
       }
