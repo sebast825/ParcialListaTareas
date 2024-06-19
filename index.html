@@ -31,6 +31,51 @@
   </nav>
 
 
+<!-- Modal -->
+<div class="modal fade" id="configuracionModal" tabindex="-1" role="dialog" aria-labelledby="configuracionModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <!-- Encabezado del modal -->
+      <div class="modal-header">
+        <h5 class="modal-title" id="configuracionModalLabel">Configuración de Voz</h5>
+        <!-- Botón para cerrar el modal -->
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="inputRate">Velocidad de Reproduccion</label>
+          <input type="range" class="form-control-range" id="inputRateConfiguration" min="-0.9" max="1.1" value="1" step="0.01">
+        </div>
+
+        <!-- Select de voces -->
+        <div class="form-group">
+          <label for="selectVoice">Voz</label>
+          <select class="form-control" id="selectVoice">
+            <option value="es-MX">Español México</option>
+            <option value="es-ES">Español España</option>
+            <option value="es-US">Español USA</option>
+            <option value="it-IT">Italiano</option>
+            <option value="en-GB">Inglés británico</option>
+            <option value="en-US">Inglés norteamericano</option>
+            <option value="en-CA">Inglés canadiense</option>
+            <option value="pt-BR">Portugués de Brasil</option>
+            <option value="pt-PT">Portugués</option>
+          </select>
+        </div>
+      </div>
+      
+      <!-- Pie del modal (botones de acción) -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary closeConfiguracionModalBtn" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary configurationModalGuardarBtn" id="guardarConfiguracionBtn">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
  <div class="modal fade" id="taskModal" tabindex="-1" role="dialog" aria-labelledby="taskModalLabel" aria-hidden="true">
    <div class="modal-dialog" role="document">
      <div class="modal-content">
@@ -113,7 +158,7 @@
                  <div class="modal-footer flex-column w-100">  
                   <button type="button" class="btn btn-primary btn-block createTask" data-toggle="modal"data-dismiss="modal" data-target="#createModal">Crear Tarea</button>
                   <button type="button" class="btn btn-danger btn-block changeStatus"data-toggle="modal"data-dismiss="modal" data-target="#taskModal">Cambiar Estado</button>
-                  <button type="button" class="btn btn-secondary btn-block config" data-toggle="modal"data-dismiss="modal">Configuración</button>
+                  <button type="button" class="btn btn-secondary btn-block config" data-toggle="modal"data-dismiss="modal"data-target="#configuracionModal"> Configuración</button>
 
 
               
@@ -124,6 +169,7 @@
    <script src="script/ajax.js"></script>
 <script src="script/update.js"></script>
 <script src="script/tareas.js"></script>
+<script src="script/configuration.js"></script>
 
 </body>
 </html>

@@ -16,7 +16,6 @@ function retornarFilaHTML(data) {
  
    `;
 }
-
 function agregarEventoAudio() {
   let btnSpeak = document.querySelectorAll(".btnSpeak");
 
@@ -28,9 +27,7 @@ function agregarEventoAudio() {
       // Obtén el valor de data-description
       const description = descriptionElement.getAttribute("data-description");
 
-      Speakit.utterancePitch = 0.9;
-      Speakit.utteranceRate = 1.05;
-      Speakit.readText(description, "en-AU");
+      reproducirAudio(description)
     });
   });
 }
