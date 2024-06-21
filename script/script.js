@@ -11,6 +11,7 @@ formCreate.addEventListener("submit", (e) => {
       fecha: obtenerFechaHoraActual()
    }
    guardarTarea(data)
+   e.target.reset();
 })
 
 function obtenerFechaHoraActual() {
