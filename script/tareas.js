@@ -43,7 +43,8 @@ function mostrarTareas() {
 function ordenarTareas() {
   let statusTerminado = listaEstados[listaEstados.length - 1];
   tareaLista.sort((a, b) => {
-    //ordena por estado
+
+    //ordena por estado    
     if (a.estado == statusTerminado && b.estado != statusTerminado) {
       return 1;
     }
@@ -51,10 +52,33 @@ function ordenarTareas() {
       return -1;
     }
 
-    // ordena por fecha en caso de que los estados sean iguales
-    let fechaA = new Date(a.fechaCreacion);
-    let fechaB = new Date(b.fechaCreacion);
+    //ordena por fecha de creacion las sin terminar
+    if(a.estado != statusTerminado && b.estado != statusTerminado){
+      let fechaA = convertirFecha(a.fechaCreacion);
+      let fechaB = convertirFecha(b.fechaCreacion);
+      return fechaB - fechaA;
+    }
 
-    return fechaA - fechaB;
+    //esto es la primer comparacion entre una tarea sin finalizar y una finalizada, si no tira error al envarla ala funcion fecha
+    if(a.estado != statusTerminado){
+    
+      return -1
+    }
+
+  // Ordena por fecha en caso de que las 2 tareas esten terminadas
+    let fechaA = convertirFecha(a.fechaConclusion);
+    let fechaB = convertirFecha(b.fechaConclusion);
+    return fechaB - fechaA;
+ 
+ 
   });
+}
+
+  // Función para convertir la cadena de fecha a un objeto Date
+
+function convertirFecha(fechaStr) {
+  const [fecha, hora] = fechaStr.split(', ');
+  const [dia, mes, año] = fecha.split('-');
+  const [horas, minutos, segundos] = hora.split(':');
+  return new Date(año, mes - 1, dia, horas, minutos, segundos);
 }

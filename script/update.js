@@ -97,7 +97,10 @@ function actualizarTarea(tarea)
       let hora = obtenerFechaHoraActual()
        neuvaTarea = { ...neuvaTarea, fechaConclusion: hora};
 
-   } 
+   }else{
+    neuvaTarea = { ...neuvaTarea, fechaConclusion: null};
+
+   }
    tarea = neuvaTarea;
    modifcarProducto(tarea)
    

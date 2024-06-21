@@ -99,12 +99,12 @@ function guardarTarea(data, callback) {
 function modifcarProducto (data){
   const tareaModificada = {
     fechaCreacion: data.fecha,
-    fechaConculsion: data.fechaConclusion,
+    fechaConclusion: data.fechaConclusion,
     tittle: data.tittle,
     descritcion: data.description,
     estado: data.estado
   }
-
+  console.log(tareaModificada.fechaConclusion)
   const opciones = {
       method: 'PUT',
       headers: { "content-type": "application/json" },
@@ -131,6 +131,7 @@ function modifcarProducto (data){
       })
   })
   .catch((error)=> {
+    
       ToastIt.now({
           message: error.message,
           style: 'error',
