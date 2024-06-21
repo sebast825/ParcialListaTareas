@@ -3,13 +3,22 @@ const selectVoice = document.querySelector('#selectVoice')
 const inputRateConfiguration = document.querySelector('#inputRateConfiguration')
 
 
-let vozAudio = "en-AU"; 
-let velocidadReproduccion = 1
+let vozAudio = localStorage.getItem('vozAudio') || "es-MX"; 
+let velocidadReproduccion = localStorage.getItem('velocidadReproduccion') || 1;
+
+/* actualiza el FE al cargar */
+inputRateConfiguration.value = velocidadReproduccion;
+selectVoice.value = vozAudio;
+
 
 configurationGuardar.addEventListener("click",()=>{
-   console.log(inputRateConfiguration.value)
+
    velocidadReproduccion = inputRateConfiguration.value
    vozAudio = selectVoice.value
+
+   localStorage.setItem('vozAudio',vozAudio);
+   localStorage.setItem('velocidadReproduccion',velocidadReproduccion);
+
    document.querySelector('.closeConfiguracionModalBtn').click();            
 
 })
